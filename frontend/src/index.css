@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: #f8f9fc;
+  color: #1a1a2e;
+}
+
+:root {
+  --squad-red: #E3001B;
+  --squad-navy: #0a1628;
+  --squad-dark: #1e2a3a;
+  --squad-card: #f0f2f5;
+  --squad-border: #e2e8f0;
+  --text-primary: #1a1a2e;
+  --text-secondary: #64748b;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+}
