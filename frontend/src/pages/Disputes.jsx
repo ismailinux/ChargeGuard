@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const StatusBadge = ({ action }) => {
   const map = {
     '1': { label: 'Pending', bg: '#fffbeb', text: '#d97706' },
@@ -53,7 +55,7 @@ export default function Disputes() {
   const fetchDisputes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/disputes', {
+      const res = await axios.get(`${API_URL}/api/disputes`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -91,7 +93,7 @@ export default function Disputes() {
       };
 
       const res = await axios.post(
-        'http://localhost:5000/api/defence/generate',
+        `${API_URL}/api/defence/generate`,
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );

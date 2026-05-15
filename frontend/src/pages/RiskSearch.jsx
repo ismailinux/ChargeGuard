@@ -2,6 +2,8 @@ import { useState } from 'react'
 import axios from 'axios'
 import Sidebar from '../components/Sidebar'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const RiskMeter = ({ score, color }) => {
   const colors = {
     green: '#16a34a',
@@ -91,7 +93,7 @@ export default function RiskSearch() {
       ? { email: query }
       : { phone: query };
 
-    const res = await axios.get('http://localhost:5000/api/risk/search', {
+    const res = await axios.get(`${API_URL}/api/risk/search`, {
       headers: { Authorization: `Bearer ${token}` },
       params
     });
@@ -101,7 +103,7 @@ export default function RiskSearch() {
 
     // === RECORD THE SEARCH ===
     if (data.success) {
-      await axios.post('http://localhost:5000/api/risk/record', {
+      await axios.post(`${API_URL}/api/risk/record`, {
         customer_id: data.customer?.id || null,
         query: query,
         search_type: searchType,

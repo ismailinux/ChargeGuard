@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const StatCard = ({ label, value, sub, color }) => (
   <div style={{
     background: 'white',
@@ -60,7 +62,7 @@ export default function Dashboard() {
     const fetchDisputes = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/disputes', {
+        const res = await axios.get(`${API_URL}/api/disputes`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -82,7 +84,7 @@ export default function Dashboard() {
     const fetchRecent = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/risk/recent', {
+        const res = await axios.get(`${API_URL}/api/risk/recent`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setRecentSearches(res.data?.data || []);
